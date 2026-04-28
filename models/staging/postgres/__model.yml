@@ -1,0 +1,83 @@
+version: 2
+
+models:
+
+  - name: user 
+    config: 
+      contract:
+        enforced: true
+    description: > 
+      Data about all users in demo. 
+    columns:
+      - name: user_id
+        data_tests:
+          - not_null
+        data_type: text 
+        constraints:
+          - type: not_null #- unique        
+        description: > 
+          UUID for each unique budget on platform.
+      - name: product_id 
+        data_type: text
+        constraints:
+          - type: not_null
+        description: > 
+          ID of the product.
+      - name: quantity 
+        data_type: number 
+        constraints:
+          - type: not_null
+        description: > 
+          Quantity of the product.
+      - name: month 
+        data_type: TIMESTAMP_NTZ
+        constraints:
+          - type: not_null
+        description: > 
+          Creation of budget.
+      - name: date_load 
+        data_type: TIMESTAMP_TZ 
+        constraints:
+          - type: not_null
+        description: > 
+          Date that the data was loaded.`
+
+  - name: promos 
+    config: 
+      contract:
+        enforced: true
+    description: > 
+      Data about all users in demo. 
+    columns:
+      - name: user_id
+        data_tests:
+          - not_null
+        data_type: text 
+        constraints:
+          - type: not_null #- unique        
+        description: > 
+          UUID for each unique budget on platform.
+      - name: product_id 
+        data_type: text
+        constraints:
+          - type: not_null
+        description: > 
+          ID of the product.
+      - name: quantity 
+        data_type: number 
+        constraints:
+          - type: not_null
+        description: > 
+          Quantity of the product.
+      - name: month 
+        data_type: TIMESTAMP_NTZ
+        constraints:
+          - type: not_null
+        description: > 
+          Creation of budget.
+      - name: date_load 
+        data_type: TIMESTAMP_TZ 
+        constraints:
+          - type: not_null
+        description: > 
+          Date that the data was loaded.`
