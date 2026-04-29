@@ -7,7 +7,7 @@ models:
       contract:
         enforced: true
     description: > 
-      Data about all budgets in demo. 
+      Data about all budgets in demo
     columns:
       - name: _row 
         data_tests:
@@ -16,19 +16,19 @@ models:
         constraints:
           - type: not_null #- unique        
         description: > 
-          UUID for each unique budget on platform.
+          UUID for each unique budget on platform
       - name: product_id 
         data_type: text
         constraints:
           - type: not_null
         description: > 
-          ID of the product.
+          ID of the product
       - name: quantity 
         data_type: number 
         constraints:
           - type: not_null
         description: > 
-          Quantity of the product.
+          Quantity of the product
       - name: month 
         data_type: TIMESTAMP_NTZ
         constraints:
@@ -40,4 +40,4 @@ models:
         constraints:
           - type: not_null
         description: > 
-          Date that the data was loaded.`
+          Date that the data was loaded
