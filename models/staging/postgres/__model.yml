@@ -16,31 +16,63 @@ models:
         constraints:
           - type: not_null #- unique        
         description: > 
-          UUID for each unique budget on platform.
-      - name: product_id 
-        data_type: text
-        constraints:
-          - type: not_null
-        description: > 
-          ID of the product.
-      - name: quantity 
-        data_type: number 
-        constraints:
-          - type: not_null
-        description: > 
-          Quantity of the product.
-      - name: month 
+          UUID for each unique user on platform
+      - name: updated_at 
         data_type: TIMESTAMP_NTZ
         constraints:
           - type: not_null
         description: > 
-          Creation of budget.
+          Update of budget.
+      - name: address_id 
+        data_type: TIMESTAMP_NTZ 
+        constraints:
+          - type: not_null
+        description: > 
+          UUID for each address on platform
+      - name: last_name 
+        data_type: text
+        constraints:
+          - type: not_null
+        description: > 
+          Last name of user
+      - name: created_at 
+        data_type: TIMESTAMP_NTZ
+        constraints:
+          - type: not_null
+        description: > 
+          Creation of user.
+      - name: phone_number 
+        data_type: number 
+        constraints:
+          - type: not_null
+        description: > 
+          Phone number of user
+      - name: total_orders 
+        data_type: number 
+        description: > 
+          Total amount of each user
+      - name: first_name 
+        data_type: text
+        constraints:
+          - type: not_null
+        description: > 
+          First name of user
+      - name: email 
+        data_type: text
+        constraints:
+          - type: not_null
+        description: > 
+          Email of user
+      - name: _fivetram_deleted
+        data_type: TIMESTAMP_TZ 
+        description: > 
+          Date that the data was deleted
       - name: date_load 
         data_type: TIMESTAMP_TZ 
         constraints:
           - type: not_null
         description: > 
-          Date that the data was loaded.`
+          Date that the data was loaded
 
   - name: promos 
     config: 
@@ -49,35 +81,33 @@ models:
     description: > 
       Data about all users in demo. 
     columns:
-      - name: user_id
+      - name: promo_id
         data_tests:
           - not_null
         data_type: text 
         constraints:
           - type: not_null #- unique        
         description: > 
-          UUID for each unique budget on platform.
-      - name: product_id 
-        data_type: text
+          UUID for each unique promo on platform.
+      - name: discount 
+        data_type: number
         constraints:
           - type: not_null
         description: > 
-          ID of the product.
-      - name: quantity 
+          Discount of the promo.
+      - name: status 
         data_type: number 
         constraints:
           - type: not_null
         description: > 
-          Quantity of the product.
-      - name: month 
-        data_type: TIMESTAMP_NTZ
-        constraints:
-          - type: not_null
+          Status of the promo.
+      - name: _fivetram_deleted
+        data_type: TIMESTAMP_TZ 
         description: > 
-          Creation of budget.
+          Date that the data was deleted
       - name: date_load 
         data_type: TIMESTAMP_TZ 
         constraints:
           - type: not_null
         description: > 
-          Date that the data was loaded.`
+          Date that the data was loaded
