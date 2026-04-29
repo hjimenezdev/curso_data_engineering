@@ -86,7 +86,8 @@ models:
           - not_null
         data_type: text 
         constraints:
-          - type: not_null #- unique        
+          - type: not_null
+          - type: unique   
         description: > 
           UUID for each unique promo on platform.
       - name: discount 
