@@ -5,8 +5,7 @@
         target_schema='snapshots',
         unique_key='DNI',
         strategy='timestamp',
-        updated_at='fecha_alta_sistema',
-        hard_delete='new_record'
+        updated_at='fecha_alta_sistema'
     )
 }}
 

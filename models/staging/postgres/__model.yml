@@ -113,3 +113,118 @@ models:
           - type: not_null
         description: > 
           Date that the data was loaded
+
+  - name: orders
+    description: >
+      Data about all orders in demo.
+    columns:
+      - name: order_id
+        data_type: text
+        constraints:
+          - type: not_null
+          - type: unique
+        description: >
+          UUID for each order.
+
+      - name: user_id
+        data_type: text
+        constraints:
+          - type: not_null
+        description: >
+          UUID of the user who made the order.
+
+      - name: address_id
+        data_type: text
+        constraints:
+          - type: not_null
+        description: >
+          UUID of the delivery address.
+
+      - name: promo_id
+        data_type: text
+        description: >
+          Promo applied to the order (if any).
+
+      - name: shipping_service
+        data_type: text
+        description: >
+          Shipping provider used.
+
+      - name: shipping_cost
+        data_type: number
+        description: >
+          Cost of shipping.
+
+      - name: order_cost
+        data_type: number
+        description: >
+          Cost before shipping and discounts.
+
+      - name: order_total
+        data_type: number
+        description: >
+          Final total paid for the order.
+
+      - name: status
+        data_type: text
+        constraints:
+          - type: not_null
+        description: >
+          Current status of the order.
+
+      - name: tracking_id
+        data_type: text
+        description: >
+          Tracking identifier for shipment.
+
+      - name: created_at
+        data_type: TIMESTAMP_NTZ
+        constraints:
+          - type: not_null
+        description: >
+          Order creation timestamp.
+
+      - name: estimated_delivery_at
+        data_type: TIMESTAMP_NTZ
+        description: >
+          Estimated delivery timestamp.
+
+      - name: delivered_at
+        data_type: TIMESTAMP_NTZ
+        description: >
+          Actual delivery timestamp.
+
+  - name: adresses
+    config:
+      contract:
+        enforced: true
+    description: >
+      Data about all addresses in demo.
+    columns:
+      - name: address_id
+        data_type: text
+        constraints:
+          - type: not_null
+          - type: unique
+        description: >
+          UUID for each address on platform.
+
+      - name: zipcode
+        data_type: text
+        description: >
+          Zip or postal code.
+
+      - name: country
+        data_type: text
+        description: >
+          Country of the address.
+
+      - name: address
+        data_type: text
+        description: >
+          Full address.
+
+      - name: state
+        data_type: text
+        description: >
+          State or region of the address.

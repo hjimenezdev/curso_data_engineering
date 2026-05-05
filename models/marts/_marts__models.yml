@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: Hechos de pedidos del e-commerce demo. Una fila por order_id.
+
+    semantic_model:
+      enabled: true
+      name: orders
+
+    agg_time_dimension: order_date
+
+    columns:
+      - name: order_id
+        entity:
+          type: primary
+          name: orders          # ojo: 'order' a secas choca con la keyword SQL.
+
+      - name: user_id
+        entity:
+          type: foreign
+          name: user
+
+      - name: order_date
+        granularity: day
+        dimension:
+          type: time
+
+      - name: status
+        dimension:
+          type: categorical
+
+      - name: address_country
+        dimension:
+          type: categorical
+          name: country
+
+    metrics:
+      - name: total_revenue
+        label: Total revenue
+        type: simple
+        agg: sum
+        expr: order_total
+
+      - name: total_orders
+        label: Total orders
+        type: simple
+        agg: count
+        expr: order_id
+
+      - name: total_unique_buyers
+        label: Total unique buyers
+        type: simple
+        agg: count_distinct
+        expr: user_id
+
+      - name: avg_order_value
+        label: Average order value
+        type: ratio
+        numerator: total_revenue
+        denominator: total_orders
+
+      - name: revenue_per_buyer
+        label: Revenue per buyer
+        type: derived
+        expr: revenue / buyers
+        input_metrics:
+          - name: total_revenue
+            alias: revenue
+          - name: total_unique_buyers
+            alias: buyers
+
+#      - name: revenue_l30d
+#        label: Revenue last 30 days
+#        type: cumulative
+#        type_params:
+#          measure:
+#            name: total_revenue
+#          cumulative_type_params:
+#            window: 30 days

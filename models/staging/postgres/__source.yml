@@ -2,25 +2,25 @@ version: 2
 
 sources:
 
-  - name: postgres # name of the source 
-    schema: postgres # this is the schema our raw data lives in
-    database: DB26_BRONZE_DB # this is the name of our database quoting:
+  - name: postgres
+    schema: postgres
+    database: DB26_BRONZE_DB
 
-    quoting: 
+    quoting:
       database: false
       schema: false
-      identifier: false 
-    
+      identifier: false
+
     config:
       freshness:
         warn_after: {count: 24, period: hour}
-        error_after: {count: 48, period: hour} 
-      
+        error_after: {count: 48, period: hour}
+
     tables:
 
-      - name: user 
+      - name: user
         config:
-          loaded_at_field: _fivetran_synced 
+          loaded_at_field: _fivetran_synced
         columns:
           - name: USER_ID
           - name: UPDATED_AT
@@ -34,12 +34,44 @@ sources:
           - name: _FIVETRAN_DELETED
           - name: _FIVETRAN_SYNCED
 
-      - name: promos 
+      - name: promos
         config:
-          loaded_at_field: _fivetran_synced 
+          loaded_at_field: _fivetran_synced
         columns:
           - name: PROMO_ID
           - name: DISCOUNT
           - name: STATUS
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+
+      - name: orders
+        config:
+          loaded_at_field: _fivetran_synced
+        columns:
+          - name: ORDER_ID
+          - name: SHIPPING_SERVICE
+          - name: SHIPPING_COST
+          - name: ADDRESS_ID
+          - name: CREATED_AT
+          - name: PROMO_ID
+          - name: ESTIMATED_DELIVERY_AT
+          - name: ORDER_COST
+          - name: USER_ID
+          - name: ORDER_TOTAL
+          - name: DELIVERED_AT
+          - name: TRACKING_ID
+          - name: STATUS
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+
+      - name: addresses
+        config:
+          loaded_at_field: _fivetran_synced
+        columns:
+          - name: ADDRESS_ID
+          - name: ADDRESS
+          - name: ZIPCODE
+          - name: STATE
+          - name: COUNTRY
           - name: _FIVETRAN_DELETED
           - name: _FIVETRAN_SYNCED
